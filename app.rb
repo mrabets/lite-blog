@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require "sqlite3"
+require 'sqlite3'
 
 configure do
   $db = SQLite3::Database.new 'base.db'
@@ -11,6 +11,10 @@ configure do
       "Content"	TEXT,
       PRIMARY KEY("Id" AUTOINCREMENT)
     )'
+end
+
+helpers do
+  require './my_methods'
 end
 
 get '/' do
@@ -32,4 +36,9 @@ end
 
 get '/posts' do
   erb :posts
+end
+
+get '/post/:post_id' do
+  post_id = params[:post_id]
+  erb "#{post_id}"
 end
