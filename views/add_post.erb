@@ -1,13 +1,13 @@
 <h1 class="display-5">Add new post</h1>
 
-<form>
+<form action="/add_post" method="post">
   <div class="mb-3">
     <label class="form-label">Title</label>
-    <input type="email" class="form-control">
+    <input name="title" type="text" class="form-control">
   </div>
   <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Write your post...</label>
-    <textarea class="form-control" rows="5"></textarea>
+    <label class="form-label">Write your post...</label>
+    <textarea name="content" class="form-control" rows="5"></textarea>
   </div>
   <button type="submit" class="btn btn-dark">Submit</button>
 </form>
