@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/add_post.erb" beforeDir="false" afterPath="$PROJECT_DIR$/views/add_post.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layout.erb" beforeDir="false" afterPath="$PROJECT_DIR$/views/layout.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/posts.erb" beforeDir="false" afterPath="$PROJECT_DIR$/views/posts.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +53,7 @@
       <workItem from="1627652201324" duration="1869000" />
       <workItem from="1627654127742" duration="6628000" />
       <workItem from="1627666084971" duration="2931000" />
-      <workItem from="1627676777284" duration="1025000" />
+      <workItem from="1627676777284" duration="2010000" />
     </task>
     <servers />
   </component>
