@@ -1,6 +1,17 @@
 require 'rubygems'
 require 'sinatra'
+require "sqlite3"
 
+configure do
+  $db = SQLite3::Database.new 'base.db'
+  $db.execute 'CREATE TABLE IF NOT EXISTS "Posts"
+    (
+      "Id"	INTEGER,
+      "Title"	INTEGER,
+      "Content"	INTEGER,
+      PRIMARY KEY("Id" AUTOINCREMENT)
+    )'
+end
 
 get '/' do
   erb 'Hello Blog'

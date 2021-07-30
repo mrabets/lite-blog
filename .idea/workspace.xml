@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f26b81e-e32a-4f9c-9854-4117b80eb9d5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/LiteBlog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LiteBlog.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/add_post.erb" beforeDir="false" afterPath="$PROJECT_DIR$/views/add_post.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layout.erb" beforeDir="false" afterPath="$PROJECT_DIR$/views/layout.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login_form.erb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +52,7 @@
       <option name="presentableId" value="Default" />
       <updated>1627652200133</updated>
       <workItem from="1627652201324" duration="1869000" />
-      <workItem from="1627654127742" duration="2750000" />
+      <workItem from="1627654127742" duration="4551000" />
     </task>
     <servers />
   </component>
