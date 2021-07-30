@@ -29,3 +29,7 @@ post '/add_post' do
 
   erb "Your title: #{@title}\ncontent: #{@content}"
 end
+
+get '/posts' do
+  erb :posts
+end
