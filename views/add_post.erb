@@ -3,11 +3,11 @@
 <form action="/add_post" method="post">
   <div class="mb-3">
     <label class="form-label">Title</label>
-    <input name="title" type="text" class="form-control">
+    <input name="title" type="text" class="form-control" required>
   </div>
   <div class="mb-3">
     <label class="form-label">Write your post...</label>
-    <textarea name="content" class="form-control" rows="5"></textarea>
+    <textarea name="content" class="form-control" rows="5" required></textarea>
   </div>
   <button type="submit" class="btn btn-dark">Submit</button>
 </form>

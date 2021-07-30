@@ -1,10 +1,14 @@
+<% $db.execute( "SELECT * FROM Posts" ) do |row| %>
+
 <div class="card mb-3">
 <!--  <img src="..." class="card-img-top" alt="...">-->
   <div class="card-body">
-    <% $db.execute( "SELECT * FROM Posts" ) do |row| %>
-        <h5 class="card-title"><%= row[1] %>></h5>
-        <p class="card-text"><%= row[2] %></p>
-<!--        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
-    <% end %>
+
+        <h5 class="card-title"><%= row[1] %></h5>
+        <p class="card-text"><%= row[2].length > 100 ? "#{row[2][..100]}..." : row[2] %></p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
   </div>
 </div>
+
+<% end %>
