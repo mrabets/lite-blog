@@ -39,6 +39,6 @@ get '/posts' do
 end
 
 get '/post/:post_id' do
-  post_id = params[:post_id]
-  erb "#{post_id}"
+  @post_id = params[:post_id]
+  erb :post_page
 end
