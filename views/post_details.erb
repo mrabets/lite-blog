@@ -1,29 +1,28 @@
 <br><h1 class="display-5">Posts</h1><br>
 
-<% $db.execute( "SELECT * FROM Posts WHERE id=?", [@post_id] ) do |row| %>
-
-  <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-    <div class="col p-4 d-flex flex-column position-static">
-      <!--      <strong class="d-inline-block mb-2 text-success">Design</strong>-->
-      <h3 class="mb-0"><%= row[1] %></h3>
-      <!--      <div class="mb-1 text-muted">Nov 11</div>-->
-      <p class="mb-auto"><%= row[2] %></p>
-    </div>
-  </div>
-
-<% end %>
-
-<hr><h1 class="display-6">Comments</h1>
-<div class="d-flex">
-  <div class="flex-shrink-0">
-    <img src="https://i.ibb.co/n1cR88H/Pngtree-female-user-vector-avatar-icon-4005060.png" height="42" width="42">
-  </div>
-  <div class="flex-grow-1 ms-3">
-    This is some content from a media component. You can replace this with any content and adjust it as needed.
+<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+  <div class="col p-4 d-flex flex-column position-static">
+    <!--      <strong class="d-inline-block mb-2 text-success">Design</strong>-->
+    <h3 class="mb-0"><%= @row[1] %></h3>
+    <!--      <div class="mb-1 text-muted">Nov 11</div>-->
+    <p class="mb-auto"><%= @row[2] %></p>
   </div>
 </div>
 
-<form action="/post/<%= @post_id %>" method="post">
+<hr><h1 class="display-6">Comments</h1><hr>
+<% @comment_row.each do |row| %>
+  <div class="d-flex">
+    <div class="flex-shrink-0">
+      <img src="https://i.ibb.co/n1cR88H/Pngtree-female-user-vector-avatar-icon-4005060.png" height="42" width="42">
+    </div>
+    <div class="flex-grow-1 ms-3">
+      <%= row[2] %>
+    </div>
+    <p><%= row[1] %></p>
+  </div><br>
+<% end %>
+
+<form action="/post/<%= @row[0] %>" method="post">
   <div class="mb-3">
     <label class="form-label">Write your comment...</label>
     <textarea name="comment" class="form-control" rows="2" required></textarea>

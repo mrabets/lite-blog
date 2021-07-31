@@ -27,7 +27,7 @@ helpers do
 end
 
 get '/' do
-  erb :posts
+  redirect to '/posts'
 end
 
 get '/add_post' do
@@ -44,18 +44,27 @@ post '/add_post' do
 end
 
 get '/posts' do
+  @result = $db.execute( "SELECT * FROM Posts" )
   erb :posts
 end
 
 get '/post/:post_id' do
-  @post_id = params[:post_id]
+  post_id = params[:post_id]
+
+  results = $db.execute( "SELECT * FROM Posts WHERE Id = ?", [post_id] )
+  @row = results[0]
+
+  results = $db.execute( "SELECT * FROM Comments WHERE PostId = ?", [post_id] )
+  @comment_row = results
+
   erb :post_details
 end
 
 post '/post/:post_id' do
+  @post_id = params[:post_id]
   @comment = params[:comment]
 
+  $db.execute 'INSERT INTO Comments(DateTime, Content, PostId) VALUES (datetime(), ?, ?)', [@comment, @post_id]
 
-
-  erb :post_details
+  erb "Your comment #{@comment}, post_id = #{@post_id}"
 end
