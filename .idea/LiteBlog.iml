@@ -155,5 +155,7 @@
     </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.2.15, ruby-3.0.1-p64) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rbs (v1.0.4, ruby-3.0.1-p64) [gem]" level="application" />
+    <orderEntry type="library" name="quill.snow" level="application" />
+    <orderEntry type="library" name="quill" level="application" />
   </component>
 </module>
