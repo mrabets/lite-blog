@@ -11,6 +11,15 @@ configure do
       "Content"	TEXT,
       PRIMARY KEY("Id" AUTOINCREMENT)
     )'
+
+  $db.execute 'CREATE TABLE IF NOT EXISTS "Comments"
+    (
+      "Id"	INTEGER,
+      "DateTime"	DATE,
+      "Content"	TEXT,
+      "PostId" INTEGER,
+      PRIMARY KEY("Id" AUTOINCREMENT)
+    )'
 end
 
 helpers do
@@ -45,6 +54,8 @@ end
 
 post '/post/:post_id' do
   @comment = params[:comment]
+
+
 
   erb :post_details
 end
