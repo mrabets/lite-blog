@@ -40,5 +40,11 @@ end
 
 get '/post/:post_id' do
   @post_id = params[:post_id]
-  erb :post_page
+  erb :post_details
+end
+
+post '/post/:post_id' do
+  @comment = params[:comment]
+
+  erb :post_details
 end
