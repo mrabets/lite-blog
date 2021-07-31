@@ -10,15 +10,16 @@
 </div>
 
 <hr><h1 class="display-6">Comments</h1><hr>
-<% @comment_row.each do |row| %>
+<% @comments.each do |comment| %>
   <div class="d-flex">
     <div class="flex-shrink-0">
       <img src="https://i.ibb.co/n1cR88H/Pngtree-female-user-vector-avatar-icon-4005060.png" height="42" width="42">
     </div>
     <div class="flex-grow-1 ms-3">
-      <%= row[2] %>
+      <%= comment[2] %><br>
+      <span style="font-size: 75%; color: #999"><%= comment[1] %></span>
     </div>
-    <p><%= row[1] %></p>
+
   </div><br>
 <% end %>
 

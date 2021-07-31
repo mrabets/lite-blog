@@ -6,16 +6,18 @@ configure do
   $db = SQLite3::Database.new 'base.db'
   $db.execute 'CREATE TABLE IF NOT EXISTS "Posts"
     (
-      "Id"	INTEGER,
-      "Title"	TEXT,
+      "Id" INTEGER,
+      "Title" TEXT,
       "Content"	TEXT,
+      "Author" TEXT,
+      "DateTime" DATE,
       PRIMARY KEY("Id" AUTOINCREMENT)
     )'
 
   $db.execute 'CREATE TABLE IF NOT EXISTS "Comments"
     (
-      "Id"	INTEGER,
-      "DateTime"	DATE,
+      "Id" INTEGER,
+      "DateTime" DATE,
       "Content"	TEXT,
       "PostId" INTEGER,
       PRIMARY KEY("Id" AUTOINCREMENT)
@@ -35,12 +37,13 @@ get '/add_post' do
 end
 
 post '/add_post' do
+  @author = params[:author]
   @title = params[:title]
   @content = params[:content]
 
-  $db.execute 'INSERT INTO Posts(Title, Content) VALUES (?, ?)', [@title, @content]
+  $db.execute 'INSERT INTO Posts(Title, Content, Author, DateTime) VALUES (?, ?, ?, datetime())', [@title, @content, @author]
 
-  erb "Your title: #{@title}\ncontent: #{@content}"
+  erb "Your author:#{@author}\ntitle: #{@title}\ncontent: #{@content}"
 end
 
 get '/posts' do
@@ -55,7 +58,7 @@ get '/post/:post_id' do
   @row = results[0]
 
   results = $db.execute( "SELECT * FROM Comments WHERE PostId = ?", [post_id] )
-  @comment_row = results
+  @comments = results
 
   erb :post_details
 end
