@@ -61,10 +61,11 @@ get '/post/:post_id' do
 end
 
 post '/post/:post_id' do
-  @post_id = params[:post_id]
-  @comment = params[:comment]
+  post_id = params[:post_id]
+  comment = params[:comment]
 
-  $db.execute 'INSERT INTO Comments(DateTime, Content, PostId) VALUES (datetime(), ?, ?)', [@comment, @post_id]
+  $db.execute 'INSERT INTO Comments(DateTime, Content, PostId) VALUES (datetime(), ?, ?)', [comment, post_id]
 
-  erb "Your comment #{@comment}, post_id = #{@post_id}"
+  # erb "Your comment #{@comment}, post_id = #{@post_id}"
+  redirect to('/post/' + post_id)
 end
