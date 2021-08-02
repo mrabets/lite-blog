@@ -3,15 +3,15 @@
 <form action="/add_post" method="post">
   <div class="mb-3">
     <label class="form-label">Author</label>
-    <input name="author" type="text" class="form-control" required>
+    <input name="post[author]" type="text" class="form-control" value="<%= @post.author %>" required>
   </div>
   <div class="mb-3">
     <label class="form-label">Title</label>
-    <input name="title" type="text" class="form-control" required>
+    <input name="post[title]" type="text" class="form-control" value="<%= @post.title %>" required>
   </div>
   <div class="mb-3">
     <label class="form-label">Write your post...</label>
-    <textarea name="content" class="form-control" rows="5" required></textarea>
+    <textarea name="post[content]" class="form-control" rows="5" required><%= @post.content %></textarea>
   </div>
   <br><button type="submit" class="btn btn-dark">Submit</button>
 </form>

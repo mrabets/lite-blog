@@ -1,6 +1,13 @@
 require 'rubygems'
 require 'sinatra'
+require 'sinatra/reloader'
+require 'sinatra/activerecord'
 require 'sqlite3'
+
+set :database, { adapter: 'sqlite3', database: 'blog.db' }
+
+class Post < ActiveRecord::Base
+end
 
 configure do
   $db = SQLite3::Database.new 'base.db'
@@ -33,21 +40,24 @@ get '/' do
 end
 
 get '/add_post' do
+  @post = Post.new
   erb :add_post
 end
 
 post '/add_post' do
-  @author = params[:author]
-  @title = params[:title]
-  @content = params[:content]
+  @post = Post.new params[:post]
+  @post.datestamp = DateTime.current.to_date
 
-  $db.execute 'INSERT INTO Posts(Title, Content, Author, DateTime) VALUES (?, ?, ?, datetime())', [@title, @content, @author]
+  if @post.save
+    erb "Your author:#{@post.author}\ntitle: #{@post.title}\ncontent: #{@post.content}"
+  else
+    @error = @post.errors.full_messages.first
+    erb :add_post
+  end
 
-  erb "Your author:#{@author}\ntitle: #{@title}\ncontent: #{@content}"
 end
 
 get '/posts' do
-  @result = $db.execute( "SELECT * FROM Posts" )
   erb :posts
 end
 
