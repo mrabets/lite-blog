@@ -61,19 +61,15 @@ get '/posts' do
   erb :posts
 end
 
-get '/post/:post_id' do
-  post_id = params[:post_id]
+get '/post/:id' do
+  post_id = params[:id]
 
-  results = $db.execute( "SELECT * FROM Posts WHERE Id = ?", [post_id] )
-  @row = results[0]
-
-  results = $db.execute( "SELECT * FROM Comments WHERE PostId = ?", [post_id] )
-  @comments = results
+  @post = Post.find post_id
 
   erb :post_details
 end
 
-post '/post/:post_id' do
+post '/post/:id' do
   post_id = params[:post_id]
   comment = params[:comment]
 
