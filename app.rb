@@ -9,6 +9,9 @@ set :database, { adapter: 'sqlite3', database: 'blog.db' }
 class Post < ActiveRecord::Base
 end
 
+class Comment < ActiveRecord::Base
+end
+
 configure do
   $db = SQLite3::Database.new 'base.db'
   $db.execute 'CREATE TABLE IF NOT EXISTS "Posts"
@@ -62,19 +65,25 @@ get '/posts' do
 end
 
 get '/post/:id' do
-  post_id = params[:id]
-
-  @post = Post.find post_id
+  @post = Post.find params[:id]
 
   erb :post_details
 end
 
 post '/post/:id' do
-  post_id = params[:post_id]
-  comment = params[:comment]
+  post_id = params[:id]
+  content = params[:content]
 
-  $db.execute 'INSERT INTO Comments(DateTime, Content, PostId) VALUES (datetime(), ?, ?)', [comment, post_id]
+  comment = Comment.new
+  comment.post_id = post_id
+  comment.content = content
+  comment.datestamp = DateTime.current.to_date
 
-  # erb "Your comment #{@comment}, post_id = #{@post_id}"
-  redirect to('/post/' + post_id)
+  if comment.save
+    redirect to('/post/' + post_id)
+  else
+    @error = comment.errors.full_messages.first
+    erb :post_details
+  end
+
 end

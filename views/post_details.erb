@@ -9,24 +9,24 @@
   </div>
 </div>
 
-<!--<hr><h1 class="display-6">Comments</h1><hr>-->
-<%# @comments.each do |comment| %>
-<!--  <div class="d-flex">-->
-<!--    <div class="flex-shrink-0">-->
-<!--      <img src="https://i.ibb.co/n1cR88H/Pngtree-female-user-vector-avatar-icon-4005060.png" height="42" width="42">-->
-<!--    </div>-->
-<!--    <div class="flex-grow-1 ms-3">-->
-<!--      <%#= comment[2] %><br>-->
-<!--      <span style="font-size: 75%; color: #999"><%#= comment[1] %></span>-->
-<!--    </div>-->
+<hr><h1 class="display-6">Comments</h1><hr>
+<% Comment.where("post_id = ?", @post.id).each do |comment| %>
+  <div class="d-flex">
+    <div class="flex-shrink-0">
+      <img src="https://i.ibb.co/n1cR88H/Pngtree-female-user-vector-avatar-icon-4005060.png" height="42" width="42">
+    </div>
+    <div class="flex-grow-1 ms-3">
+      <%= comment.content %><br>
+      <span style="font-size: 75%; color: #999"><%= comment.datestamp %></span>
+    </div>
 
-<!--  </div><br>-->
-<%# end %>
+  </div><br>
+<% end %>
 
 <form action="/post/<%= @post.id %>" method="post">
   <div class="mb-3">
     <label class="form-label">Write your comment...</label>
-    <textarea name="comment" class="form-control" rows="2" required></textarea>
+    <textarea name="content" class="form-control" rows="2" required></textarea>
   </div>
   <button type="submit" class="btn btn-dark">Submit</button>
 </form>
