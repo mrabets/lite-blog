@@ -7,9 +7,14 @@ require 'sqlite3'
 set :database, { adapter: 'sqlite3', database: 'blog.db' }
 
 class Post < ActiveRecord::Base
+  validates :author, presence: true, length: { minimum: 2 }
+  validates :title, presence: true, length: { maximum: 200 }
+  validates :content, presence: true
+  validates :datestamp, presence: true
 end
 
 class Comment < ActiveRecord::Base
+  validates :content, presence: true, length: { in: 1..200 }
 end
 
 configure do
